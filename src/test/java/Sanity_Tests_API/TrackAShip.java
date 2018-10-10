@@ -8,11 +8,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.internal.TestMethodWithDataProviderMethodWorker;
 
-import com.ptrac.qa.baseclass.PTRAC_API_TestBase;
-import com.ptrac.qa.baseclass.PTRAC_TestBase;
 import com.ptrac.qa.utilities.Utilities;
 import com.ptrac.qa.utilities.WebServices;
 
+import baseClass.PTRAC_API_TestBase;
+import baseClass.PTRAC_TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 

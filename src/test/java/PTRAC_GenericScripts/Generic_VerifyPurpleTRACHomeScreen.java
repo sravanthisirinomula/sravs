@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.Iterator;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import com.ptrac.qa.baseclass.PTRAC_TestBase;
-import com.ptrac.qa.commonMethods.CommonMethods;
-import com.ptrac.qa.webpages.HomePage;
-import com.ptrac.qa.webpages.LoginPage;
-import com.ptrac.qa.webpages.SortingPage;
+
+import baseClass.PTRAC_TestBase;
+import commonMethods.CommonMethods;
+import webPages.HomePage;
+import webPages.LoginPage;
+import webPages.SortingPage;
 
 public class Generic_VerifyPurpleTRACHomeScreen extends PTRAC_TestBase{
 	LoginPage loginPage;

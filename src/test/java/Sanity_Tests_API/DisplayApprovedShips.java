@@ -7,11 +7,11 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.baseclass.PTRAC_API_TestBase;
-import com.ptrac.qa.baseclass.PTRAC_TestBase;
 import com.ptrac.qa.utilities.Utilities;
 import com.ptrac.qa.utilities.WebServices;
 
+import baseClass.PTRAC_API_TestBase;
+import baseClass.PTRAC_TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 

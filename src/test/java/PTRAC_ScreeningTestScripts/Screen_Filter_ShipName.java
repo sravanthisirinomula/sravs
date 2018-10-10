@@ -13,20 +13,20 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.baseclass.PTRAC_TestBase;
-import com.ptrac.qa.commonMethods.CommonMethods;
 import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.webpages.AddShipsPage;
-import com.ptrac.qa.webpages.HomePage;
-import com.ptrac.qa.webpages.LoginPage;
-import com.ptrac.qa.webpages.ScreenPage;
-import com.ptrac.qa.webpages.SearchPage;
+
+import baseClass.PTRAC_TestBase;
+import commonMethods.CommonMethods;
+import webPages.AddShipsPage;
+import webPages.HomePage;
+import webPages.LoginPage;
+import webPages.ScreenPage;
+import webPages.SearchPage;
 
 public class Screen_Filter_ShipName extends PTRAC_TestBase {
 	CommonMethods cm;
 	Robot robot;
 	HomePage homePage;
-	AddShipsPage addShipsPage;
 	ScreenPage screenPage;
 
 	Screen_Filter_ShipName(){
@@ -37,7 +37,6 @@ public class Screen_Filter_ShipName extends PTRAC_TestBase {
 	public void FilterShips() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException {
 		cm=new CommonMethods();
 		homePage=new HomePage();
-		addShipsPage=new AddShipsPage();
 		Object data[][]=Utilities.getDatafromExcel(ScreeningTestDataFile, "FilterShips");
 		getBrowser();
 		NavigateWebURL();
