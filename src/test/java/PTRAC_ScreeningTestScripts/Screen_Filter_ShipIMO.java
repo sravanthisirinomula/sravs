@@ -25,7 +25,6 @@ import webPages.SearchPage;
 
 public class Screen_Filter_ShipIMO extends PTRAC_TestBase {
 	CommonMethods cm;
-	Robot robot;
 	HomePage homePage;
 	AddShipsPage addShipsPage;
 	ScreenPage screenPage;

@@ -9,6 +9,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -85,6 +86,31 @@ public class HomePage extends PTRAC_TestBase{
 
 	@FindBy(xpath=".//span[contains(.,'Terms of Use')]")
 	WebElement dlgTermsOfUse;
+	
+	@FindBy(xpath=".//span[contains(.,'System Status')]")
+	WebElement lnkSystemStatus;
+	
+	@FindAll(value= {@FindBy(xpath=".//div[starts-with(@id,'component')]")})
+	List<WebElement> lblSystemStatusComponent;	
+	
+	@FindAll(value= {@FindBy(xpath=".//div[contains(@class,'ReportWindow-ok')]")})
+	List<WebElement> lblSystemStatus;	
+
+	public List<WebElement> getLblSystemStatus() {
+		return lblSystemStatus;
+	}
+
+	public List<WebElement> getLblSystemStatusComponent() {
+		return lblSystemStatusComponent;
+	}
+	
+	public WebElement getTabDashboard() {
+		return tabDashboard;
+	}
+
+	public WebElement getLnkSystemStatus() {
+		return lnkSystemStatus;
+	}
 
 	public WebElement getLogoutTxt() {
 		return logoutTxt;
