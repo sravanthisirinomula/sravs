@@ -45,11 +45,11 @@ public class CommonMethods extends PTRAC_TestBase{
 		loginPage= new LoginPage();
 		enterValue("User Name", loginPage.getTxtUserName(), userName);		
 		enterValue("Password", loginPage.getTxtPassword(), password);
-		Thread.sleep(5000);
+		wait(3);
 		click("Login button", loginPage.getBtnLogin());
 		wait(5);	
-		}
-	
+	}
+
 	public HomePage loginAdmin(String userName, String password) throws IOException, InterruptedException {
 		adminLoginPage= new AdminLoginPage();
 		enterValue("User Name", adminLoginPage.getUserNameTxt(), userName);		
