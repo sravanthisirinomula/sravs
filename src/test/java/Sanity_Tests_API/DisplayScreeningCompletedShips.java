@@ -8,16 +8,15 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import utilities.Utilities;
+import utilities.WebServices;
 
 
-public class DisplayScreeningCompletedShips extends PTRAC_TestBase{
+public class DisplayScreeningCompletedShips extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;
@@ -57,4 +56,5 @@ public class DisplayScreeningCompletedShips extends PTRAC_TestBase{
 			addInfoToReport("Screening completed Ship transaction ID: "+transactionID.get(i));
 			addInfoToReport("Ship Created on: "+creationDate.get(i));
 			addInfoToReport("OverAll Severity: "+overall_severity.get(i));
+			System.out.println(transactionID.get(i));
 		}}}

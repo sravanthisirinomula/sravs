@@ -9,9 +9,9 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class ReadyToTrackShips extends PTRAC_TestBase{
+public class ReadyToTrackShips extends TestBase{
 public List<WebElement> list;
 int i;
 

@@ -12,11 +12,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import Library.TestBase;
 import adminPages.AdminHomePage;
-import baseClass.PTRAC_TestBase;
 import commonMethods.CommonMethods;
 
-public class VerifyAllLinks extends PTRAC_TestBase{
+public class VerifyAllLinks extends TestBase{
 	AdminHomePage adminHomePage;
 	CommonMethods cm;
 
@@ -25,6 +25,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		cm=new CommonMethods();
 		getBrowser();
 		navigateDjangoAdminURL();
+		driver.get("https://www.purpletrac.com/admin/");
 		cm.loginAdmin(staffUser,staffPassword);
 		wait(2);		
 
@@ -40,7 +41,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 			verifyElementDisplayed("Communicator Makes link", adminHomePage.getLnkCommunicatorMakes());
 			verifyElementDisplayed("Compliance Sanctions link", adminHomePage.getLnkComplianceSanctions());
 			verifyElementDisplayed("Countries link", adminHomePage.getLnkCountries());
-			verifyElementDisplayed("Documents link", adminHomePage.getLnkDocuments());
+			//verifyElementDisplayed("Documents link", adminHomePage.getLnkDocuments());
 			verifyElementDisplayed("Dow Jones Billing Report link", adminHomePage.getLnkDowJonesBillingReport());
 			verifyElementDisplayed("Errors link", adminHomePage.getLnkErrors());
 			verifyElementDisplayed("Exports link", adminHomePage.getLnkExports());
@@ -57,20 +58,20 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 			verifyElementDisplayed("Management Report Fields link", adminHomePage.getLnkManagementReportFields());
 			verifyElementDisplayed("Management Reports link", adminHomePage.getLnkManagementReports());
 			verifyElementDisplayed("Notification Events link", adminHomePage.getLnkNotificationEvents());
-			verifyElementDisplayed("Notifications link", adminHomePage.getLnkNotifications());
+			//verifyElementDisplayed("Notifications link", adminHomePage.getLnkNotifications());
 			verifyElementDisplayed("Overdue Ships link", adminHomePage.getLnkOverdueShips());
 			verifyElementDisplayed("Port Blacklists link", adminHomePage.getLnkPortBlacklists());
 			verifyElementDisplayed("Ports link", adminHomePage.getLnkPorts());
-			verifyElementDisplayed("Positions link", adminHomePage.getLnkPositions());
+			//verifyElementDisplayed("Positions link", adminHomePage.getLnkPositions());
 			verifyElementDisplayed("Ready To Track Ships link", adminHomePage.getLnkReadyToTrackShips());
 			verifyElementDisplayed("Registrations link", adminHomePage.getLnkRegistrations());
-			verifyElementDisplayed("Report Requests link", adminHomePage.getLnkReportRequests());
+			//verifyElementDisplayed("Report Requests link", adminHomePage.getLnkReportRequests());
 			verifyElementDisplayed("Sanctioned Countrys link", adminHomePage.getLnkSanctionedCountrys());
 			verifyElementDisplayed("Ship Details link", adminHomePage.getLnkShipDetails());
 			verifyElementDisplayed("Ships link", adminHomePage.getLnkShips());
 			verifyElementDisplayed("SIS Mappings link", adminHomePage.getLnkSisMappings());
 			verifyElementDisplayed("Transactions link", adminHomePage.getLnkTransactions());
-			verifyElementDisplayed("Translation codes link", adminHomePage.getLnkTranslationCodes());
+			//verifyElementDisplayed("Translation codes link", adminHomePage.getLnkTranslationCodes());
 			verifyElementDisplayed("User Managers link", adminHomePage.getLnkUserManagers());
 			verifyElementDisplayed("Users link", adminHomePage.getLnkUsers());
 			verifyElementDisplayed("Voyages link", adminHomePage.getLnkVoyages());
@@ -364,7 +365,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=13)
+	//@Test(priority=13)
 	public void verifyDocuments() throws IOException {
 
 		try {
@@ -390,7 +391,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=14)
+	@Test(priority=13)
 	public void verifyDowJonesBillingReport() throws IOException {
 
 		try {
@@ -415,7 +416,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=15)
+	@Test(priority=14)
 	public void verifyErrors() throws IOException {
 
 		try {
@@ -440,7 +441,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=16)
+	@Test(priority=42)
 	public void verifyExports() throws IOException {
 
 		try {
@@ -465,7 +466,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=17)
+	@Test(priority=16)
 	public void verifyFalsePositives() throws IOException {
 
 		try {
@@ -490,7 +491,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=18)
+	@Test(priority=43)
 	public void verifyFormats() throws IOException {
 
 		try {
@@ -515,7 +516,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=19)
+	@Test(priority=18)
 	public void verifyGeoserverLayer() throws IOException {
 
 		try {
@@ -540,7 +541,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=20)
+	@Test(priority=19)
 	public void verifyGeoserverLayerBillingReport() throws IOException {
 
 		try {
@@ -565,7 +566,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=21)
+	@Test(priority=20)
 	public void verifyGroups() throws IOException {
 
 		try {
@@ -590,7 +591,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=22)
+	@Test(priority=21)
 	public void verifyIHSBillingReport() throws IOException {
 
 		try {
@@ -615,7 +616,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=23)
+	@Test(priority=22)
 	public void verifyLanguages() throws IOException {
 
 		try {
@@ -640,7 +641,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=24)
+	@Test(priority=23)
 	public void verifyLoadDemoData() throws IOException {
 
 		try {
@@ -665,7 +666,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=25)
+	@Test(priority=24)
 	public void verifyMagicPasswords() throws IOException {
 
 		try {
@@ -690,7 +691,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=26)
+	@Test(priority=25)
 	public void verifyManagementReportFields() throws IOException {
 
 		try {
@@ -715,7 +716,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=27)
+	@Test(priority=26)
 	public void verifyManagementReports() throws IOException {
 
 		try {
@@ -740,7 +741,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=28)
+	@Test(priority=27)
 	public void verifyNotificationEvents() throws IOException {
 
 		try {
@@ -765,7 +766,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=29)
+	//@Test(priority=29)
 	public void verifyNotifications() throws IOException {
 
 		try {
@@ -790,7 +791,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=30)
+	@Test(priority=28)
 	public void verifyOverdueShips() throws IOException {
 
 		try {
@@ -815,7 +816,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=31)
+	@Test(priority=29)
 	public void verifyReadyToTrackShips() throws IOException {
 
 		try {
@@ -840,7 +841,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=32)
+	@Test(priority=30)
 	public void verifyRegistrations() throws IOException {
 
 		try {
@@ -866,7 +867,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=33)
+	//@Test(priority=33)
 	public void verifyReportRequests() throws IOException {
 
 		try {
@@ -891,7 +892,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=34)
+	@Test(priority=31)
 	public void verifySanctionedCountrys() throws IOException {
 
 		try {
@@ -916,7 +917,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=35)
+	@Test(priority=32)
 	public void verifyShipDetails() throws IOException {
 
 		try {
@@ -941,7 +942,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=36)
+	@Test(priority=33)
 	public void verifyShips() throws IOException {
 
 		try {
@@ -966,7 +967,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=37)
+	@Test(priority=34)
 	public void verifySISMappings() throws IOException {
 
 		try {
@@ -991,7 +992,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=38)
+	@Test(priority=35)
 	public void verifyTransactions() throws IOException {
 
 		try {
@@ -1016,7 +1017,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=39)
+	//@Test(priority=39)
 	public void verifyTranslationCodes() throws IOException {
 
 		try {
@@ -1041,7 +1042,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=40)
+	@Test(priority=36)
 	public void verifyUserManagers() throws IOException {
 
 		try {
@@ -1066,7 +1067,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=41)
+	@Test(priority=37)
 	public void verifyUsers() throws IOException {
 
 		try {
@@ -1091,7 +1092,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=42)
+	@Test(priority=38)
 	public void verifyVoyages() throws IOException {
 
 		try {
@@ -1116,7 +1117,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=43)
+	@Test(priority=39)
 	public void verifyZoneHistorys() throws IOException {
 
 		try {
@@ -1141,7 +1142,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=44)
+	@Test(priority=40)
 	public void verifyPortBlacklists() throws IOException {
 
 		try {
@@ -1167,7 +1168,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=45)
+	@Test(priority=41)
 	public void verifyPorts() throws IOException {
 
 		try {
@@ -1193,7 +1194,7 @@ public class VerifyAllLinks extends PTRAC_TestBase{
 		} 
 	}
 
-	@Test(priority=45)
+	//@Test(priority=45)
 	public void verifyPositions() throws IOException {
 
 		try {

@@ -8,22 +8,21 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.internal.TestMethodWithDataProviderMethodWorker;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import utilities.Utilities;
+import utilities.WebServices;
 
-public class TrackAShip extends PTRAC_TestBase{
+public class TrackAShip extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;
 
 	@Test
 	void trackAShip() throws EncryptedDocumentException, InvalidFormatException, IOException {
-		Object data[][]=Utilities.getDatafromExcel(apiSanTestDataFile, "TrackShip");
+		Object data[][]=Utilities.getDatafromExcel(apiTestDataFile, "TrackShip");
 		for(int i=0;i<data.length;i++) {
 			String transactionId=(String) data[i][2];
 			api=baseURL+"/api/v1/transaction/"+transactionId+"/track?"+"api_key="+apiKey+"&username="+apiUser;

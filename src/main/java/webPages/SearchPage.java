@@ -5,8 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import baseClass.PTRAC_TestBase;
-public class SearchPage extends PTRAC_TestBase{
+import Library.TestBase;
+public class SearchPage extends TestBase{
 
 @FindBy(xpath=".//input[contains(@id,'textfield') and contains(@id,'inputEl')]")
 WebElement searchText;	

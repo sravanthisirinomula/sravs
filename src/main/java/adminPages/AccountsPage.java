@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class AccountsPage extends PTRAC_TestBase{
+public class AccountsPage extends TestBase{
 
 	public AccountsPage() throws IOException{
 		super();

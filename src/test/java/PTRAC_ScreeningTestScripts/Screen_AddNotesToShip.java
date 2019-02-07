@@ -10,16 +10,15 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 import commonMethods.CommonMethods;
+import utilities.Utilities;
 import webPages.AddShipsPage;
 import webPages.HomePage;
 import webPages.LoginPage;
 import webPages.ScreenPage;
 
-public class Screen_AddNotesToShip extends PTRAC_TestBase {
+public class Screen_AddNotesToShip extends TestBase {
 	CommonMethods cm;
 	HomePage homePage;
 	AddShipsPage addShipsPage;

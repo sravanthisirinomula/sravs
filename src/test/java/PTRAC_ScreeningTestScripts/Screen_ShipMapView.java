@@ -12,16 +12,15 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 import commonMethods.CommonMethods;
+import utilities.Utilities;
 import webPages.AddShipsPage;
 import webPages.HomePage;
 import webPages.LoginPage;
 import webPages.ScreenPage;
 
-public class Screen_ShipMapView extends PTRAC_TestBase{
+public class Screen_ShipMapView extends TestBase{
 	LoginPage loginPage;
 	ScreenPage screenPage;
 	AddShipsPage addShipPage;

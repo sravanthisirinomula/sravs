@@ -8,16 +8,15 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import utilities.Utilities;
+import utilities.WebServices;
 
 
-public class DisplayDeclinedShips extends PTRAC_TestBase{
+public class DisplayDeclinedShips extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;

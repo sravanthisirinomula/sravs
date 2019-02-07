@@ -8,16 +8,15 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import utilities.Utilities;
+import utilities.WebServices;
 
 
-public class DisplayPreRegisteredShips extends PTRAC_TestBase{
+public class DisplayPreRegisteredShips extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;
@@ -27,9 +26,11 @@ public class DisplayPreRegisteredShips extends PTRAC_TestBase{
 		String apiKey=(String) data[0][1];
 		String user=(String) data[0][0];
 		 */
+		int recordNum=1;
 		api=baseURL+"/api/v1/transaction/?"+"status__in=E&order_by=-creation_date&api_key="+apiKey+"&username="+apiUser+"&limit="+limit;
 		response=WebServices.Get(api);
 		jsonPathEvaluator = response.jsonPath();
+		printToNotepad(api,response,"DisplayPreRegisteredShips",recordNum++);
 	}
 
 	@Test

@@ -8,22 +8,21 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import utilities.Utilities;
+import utilities.WebServices;
 
 
-public class ScreeningDisplayShipsBasedOnStatusIMO extends PTRAC_TestBase{
+public class ScreeningDisplayShipsBasedOnStatusIMO extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;
 
 	ScreeningDisplayShipsBasedOnStatusIMO() throws EncryptedDocumentException, InvalidFormatException, IOException {
-		Object data[][]=Utilities.getDatafromExcel(apiSanTestDataFile, "ShipStatusIMO");
+		Object data[][]=Utilities.getDatafromExcel(apiTestDataFile, "ShipStatusIMO");
 		//String apiKey=(String) data[0][1];
 		//String user=(String) data[0][0];
 		String status=(String) data[0][2];

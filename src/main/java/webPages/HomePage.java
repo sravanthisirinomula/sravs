@@ -13,10 +13,11 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class HomePage extends PTRAC_TestBase{
+public class HomePage extends TestBase{
 	public List<WebElement> list;
+	public List<String> list1;
 
 	@FindBy(xpath=".//a[contains(.,'Logout')]")
 	WebElement logoutTxt;	
@@ -29,6 +30,10 @@ public class HomePage extends PTRAC_TestBase{
 	@FindBy(xpath=".//*[@id='account']/img")
 	WebElement imgProfile;	
 
+	@FindBy(xpath="//*[@id='account']//div")
+	WebElement drpdwnProfile;	
+	
+	
 	@FindBy(id="SCREEN")
 	WebElement tabScreen;	
 
@@ -86,15 +91,55 @@ public class HomePage extends PTRAC_TestBase{
 
 	@FindBy(xpath=".//span[contains(.,'Terms of Use')]")
 	WebElement dlgTermsOfUse;
-	
+
 	@FindBy(xpath=".//span[contains(.,'System Status')]")
 	WebElement lnkSystemStatus;
-	
+
 	@FindAll(value= {@FindBy(xpath=".//div[starts-with(@id,'component')]")})
 	List<WebElement> lblSystemStatusComponent;	
-	
+
 	@FindAll(value= {@FindBy(xpath=".//div[contains(@class,'ReportWindow-ok')]")})
 	List<WebElement> lblSystemStatus;	
+
+	@FindAll(value= {@FindBy(xpath=".//*[contains(@id,'transaction')]")})
+	List<WebElement> lblTransactions;	
+
+	@FindAll(value= {@FindBy(xpath=".//*[contains(@id,'transaction')]/div[3]/div/div/span")})
+	List<WebElement> lblSeverity;	
+
+	@FindAll(value= {@FindBy(xpath=".//*[contains(@id,'transaction')]/div[1]/div/div[1]")})
+	List<WebElement> lblShipName;	
+	
+	@FindAll(value= {@FindBy(xpath=".//*[contains(@id,'transaction')]/div[1]/div[2]/div[3]")})
+	List<WebElement> lblShipIMO;	
+	
+	@FindBy(xpath=".//*[@class='settings']//a")
+	WebElement lnkSettings;
+	
+	public WebElement getLnkSettings() {
+		return lnkSettings;
+	}
+
+	public WebElement getDrpdwnProfile() {
+		return drpdwnProfile;
+	}
+
+	public List<WebElement> getLblShipIMO() {
+		return lblShipIMO;
+	}
+
+	public List<WebElement> getLblShipName() {
+		return lblShipName;
+	}
+
+	public List<WebElement> getLblSeverity() {
+		return lblSeverity;
+	}
+	
+
+	public List<WebElement> getLblTransactions() {
+		return lblTransactions;
+	}
 
 	public List<WebElement> getLblSystemStatus() {
 		return lblSystemStatus;
@@ -103,7 +148,7 @@ public class HomePage extends PTRAC_TestBase{
 	public List<WebElement> getLblSystemStatusComponent() {
 		return lblSystemStatusComponent;
 	}
-	
+
 	public WebElement getTabDashboard() {
 		return tabDashboard;
 	}
@@ -148,6 +193,27 @@ public class HomePage extends PTRAC_TestBase{
 		return lblHeader;
 	}
 
+
+	
+	@SuppressWarnings("null")
+	public List<WebElement> getTransactionIDs() {
+		List<WebElement> list=getLblTransactions();
+		System.out.println("size"+list.size());
+		return list;
+	}
+
+	public List<WebElement> getSeverity() {
+		List<WebElement> list=getLblSeverity();
+		System.out.println("size"+list.size());
+		return list;
+	}
+
+	public List<WebElement> getShipName() {
+		List<WebElement> list=getLblShipName();
+		System.out.println("size"+list.size());
+		return list;
+	}
+	
 	public WebElement getLnkAddShip() {
 		List a=driver.findElements(By.xpath(".//a[contains(@id,'ptlink')]"));
 		WebElement b = null;
@@ -155,12 +221,12 @@ public class HomePage extends PTRAC_TestBase{
 			b=(WebElement) a.get(i);
 			if (b.getText().contains("ADD SHIP")) {
 				break;
-				
+
 			}
-			}
-		return b;
 		}
-		
+		return b;
+	}
+
 	public WebElement getLblAppVersion() {
 		return lblAppVersion;
 	}
@@ -206,7 +272,7 @@ public class HomePage extends PTRAC_TestBase{
 	}
 
 	public LoginPage logout() throws IOException, InterruptedException {
-		click("Profile dropdown", imgProfile);
+		click("Profile dropdown", getDrpdwnProfile());
 		Thread.sleep(2000);
 		click("Log Out button", logoutTxt);
 		return new LoginPage();

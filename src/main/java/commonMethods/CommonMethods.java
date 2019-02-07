@@ -8,13 +8,13 @@ import java.io.IOException;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import Library.TestBase;
 import adminPages.AdminLoginPage;
-import baseClass.PTRAC_TestBase;
 import webPages.AddShipsPage;
 import webPages.HomePage;
 import webPages.LoginPage;
 
-public class CommonMethods extends PTRAC_TestBase{
+public class CommonMethods extends TestBase{
 	AddShipsPage addShipPage;
 	Robot robot;
 	HomePage homePage;

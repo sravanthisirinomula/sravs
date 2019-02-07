@@ -12,12 +12,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import Library.TestBase;
 import adminPages.AccountLayersPage;
 import adminPages.AdminHomePage;
-import baseClass.PTRAC_TestBase;
 import commonMethods.CommonMethods;
 
-public class ClientBillingReport extends PTRAC_TestBase{
+public class ClientBillingReport extends TestBase{
 	AdminHomePage adminHomePage;
 	CommonMethods cm;
 	AccountLayersPage accountLayers;

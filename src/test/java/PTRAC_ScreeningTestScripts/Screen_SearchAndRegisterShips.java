@@ -13,15 +13,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 import commonMethods.CommonMethods;
+import utilities.Utilities;
 import webPages.AddShipsPage;
 import webPages.HomePage;
 import webPages.LoginPage;
 
-public class Screen_SearchAndRegisterShips extends PTRAC_TestBase {
+public class Screen_SearchAndRegisterShips extends TestBase {
 	HomePage homePage;
 	LoginPage loginPage;
 	AddShipsPage addShipPage;

@@ -1,9 +1,11 @@
-package baseClass;
+package Library;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +23,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.jfree.util.Log;
+import org.joda.time.DateTime;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -48,11 +51,10 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-import bsh.This;
 import io.restassured.response.Response;
 
-public class PTRAC_TestBase {
-	public static final Logger logger = Logger.getLogger(PTRAC_TestBase.class.getName());
+public class TestBase {
+	public static final Logger logger = Logger.getLogger(TestBase.class.getName());
 	public static WebDriver driver;
 	public static Properties prpt;
 	public static String baseURL=null;
@@ -65,8 +67,9 @@ public class PTRAC_TestBase {
 	public String image;
 	public static String TrackingTestDataFile;
 	public static String ScreeningTestDataFile;
-	public static String apiSanTestDataFile;
+	public static String apiTestDataFile;
 	public static String apiRegTestDataFile;
+	public static String AdminTestDataFile;
 	static String driverPath = "";
 	public static WebDriverWait wait;
 	static int waitTIme = 10;
@@ -100,8 +103,9 @@ public class PTRAC_TestBase {
 			format = new SimpleDateFormat("dd_MMM_yyyy_hh_mm_ss");
 			ScreeningTestDataFile = System.getProperty("user.dir") + "/TestData/ScreeningTestData.xlsx";
 			TrackingTestDataFile = System.getProperty("user.dir") + "/TestData/TrackingTestData.xlsx";
-			apiSanTestDataFile = System.getProperty("user.dir") + "/TestData/apiSanTestData.xlsx";
+			apiTestDataFile = System.getProperty("user.dir") + "/TestData/apiTestData.xlsx";
 			apiRegTestDataFile = System.getProperty("user.dir") + "/TestData/apiRegTestData.xlsx";
+			AdminTestDataFile = System.getProperty("user.dir") + "/TestData/AdminTestData.xlsx";
 			initialiseBaseURL();
 			initialiseUsers();
 		} catch (IOException e) {
@@ -121,7 +125,7 @@ public class PTRAC_TestBase {
 		environment=prpt.getProperty("environment");
 		reports = new ExtentReports();
 		SimpleDateFormat formatt = new SimpleDateFormat("dd_MMM_HH_mm");
-		
+
 		reportName=System.getProperty("user.dir") + "/Reports/" + prpt.getProperty("reportName")+"_"+formatt.format(cal.getTime())+".html";
 		htmlReporter = new ExtentHtmlReporter(new File(reportName));
 		htmlReporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/ReportConfiguration.xml"));
@@ -153,9 +157,9 @@ public class PTRAC_TestBase {
 					"The test method named as: " + result.getName() + "(" + getClass().getName() + ") is passed",
 					MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot("Pass")).build());
 			 */
-			test.log(Status.PASS,
-					"The test method named as: '" + result.getName() + "' is passed");
-			logger.info("The test method named as: '" + result.getName() + "' is passed");
+			//test.log(Status.PASS,
+			//	"The test method named as: '" + result.getName() + "' is passed");
+			//logger.info("The test method named as: '" + result.getName() + "' is passed");
 		} else if (result.getStatus() == ITestResult.FAILURE) {
 			// String screen=getScreenshot("Fail");
 			// test.log(Status.FAIL, "The test method named as: "+result.getName()+"("+
@@ -244,6 +248,42 @@ public class PTRAC_TestBase {
 		} catch (NumberFormatException e) {
 			logger.error("properties loading not successful",e);
 		}		
+	}
+
+	public void printToNotepad(String api,Response response, String file, int recordNum) {
+		PrintWriter out = null;
+		try {
+			DateTime date=new DateTime();
+			//out = new PrintWriter(new FileWriter("C:\\test\\response.txt", true));
+			out = new PrintWriter(new FileWriter(System.getProperty("user.dir")+"/Response/"+file+date.getDayOfYear()+".txt", true));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		out.append(	"record No: "+recordNum++);
+		out.append('\n');
+		out.append("Request: "+api);
+		out.append('\n');
+		out.append("Response:");
+		out.append('\n');
+		out.append(response.prettyPrint());
+		out.append('\n');
+		out.append("**************************************************");
+		out.append('\n');
+		out.close();
+	}
+
+	public void printToNotepad(String file, String tim) {
+		PrintWriter out = null;
+		try {
+			DateTime date=new DateTime();
+			//out = new PrintWriter(new FileWriter("C:\\test\\response.txt", true));
+			out = new PrintWriter(new FileWriter(System.getProperty("user.dir")+"/Response/"+file+date.getDayOfYear()+".txt", true));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		out.append(tim);
+		out.append('\n');
+		out.close();
 	}
 
 	public static void initialiseBaseURL(){
@@ -385,10 +425,10 @@ public class PTRAC_TestBase {
 
 	public void click(String objNameStr, WebElement objName) throws IOException {
 		try {
-				//isClickable(objName, 10);
-				objName.click();
-				capturePassStatus(objNameStr + " is clicked");
-			
+			//isClickable(objName, 10);
+			objName.click();
+			capturePassStatus(objNameStr + " is clicked");
+
 		} catch (Exception e) {
 			clickJavaScript(objNameStr, objName);
 		}
@@ -482,8 +522,8 @@ public class PTRAC_TestBase {
 			if(!selected.equalsIgnoreCase(valueToSelect)) {//do stuff already selected}
 				List<WebElement> Options = dropDown.getOptions();
 				for(WebElement option:Options){
-					System.out.println("Option Selected -> " + option.getText());
 					if(option.getText().equalsIgnoreCase(valueToSelect)){
+						System.out.println("Option Selected -> " + option.getText());
 						option.click();
 						break;
 					}
@@ -509,6 +549,29 @@ public class PTRAC_TestBase {
 		}
 	}
 
+	public void selectFormDropDownListByValue(String objNameStr, WebElement objName, String valueToSelect) throws IOException{
+		try{			
+			Select dropDown = new Select(objName);
+			//dropDown.deselectAll();
+			dropDown.selectByValue(valueToSelect);
+			capturePassStatus("Selecting Value '" + valueToSelect + "' from dropdown list '" + objNameStr + "' is successful");
+		}catch (Exception e){
+			captureFailStatus("Selecting Value '" + valueToSelect + "' from dropdown list '" + objNameStr + "' Failed" + e);
+
+		}
+	}
+
+	public void selectFormDropDownListByVisibleText(String objNameStr, WebElement objName, String valueToSelect) throws IOException{
+		try{			
+			Select dropDown = new Select(objName);
+			//dropDown.deselectAll();
+			dropDown.selectByVisibleText(valueToSelect);
+			capturePassStatus("Selecting Value '" + valueToSelect + "' from dropdown list '" + objNameStr + "' is successful");
+		}catch (Exception e){
+			captureFailStatus("Selecting Value '" + valueToSelect + "' from dropdown list '" + objNameStr + "' Failed" + e);
+
+		}
+	}
 
 	public void setCheckBox(String objNameStr, WebElement objName, String option) throws IOException{
 		try{
@@ -542,6 +605,20 @@ public class PTRAC_TestBase {
 				driver.switchTo().window(parentWindow); //cntrl to parent window
 			}
 		}
+	}
+
+
+	public void moveToElement(String objNameStr, WebElement objName) throws IOException{
+
+		try{
+			Actions oAction = new Actions(driver);
+			oAction.moveToElement(objName).build().perform();
+			capturePassStatus("Moved to element: " +objNameStr);
+
+		}catch(Exception e){
+			captureFailStatus("Move to element failed"+e);
+		}
+
 	}
 
 	public void rightClickAndSelectOption(String objNameStr, WebElement objName, String optionToClick) throws IOException{
@@ -637,6 +714,35 @@ public class PTRAC_TestBase {
 	protected void getResponse() throws IOException {
 		String responser=response.asString();
 		addInfoToReport("Response"+responser);
+	}
+	protected boolean isSortAsc(List<String> list1) {
+		String prev = null;
+		for( String elem : list1 ) {
+			if( prev != null && prev.compareTo(elem) > 0 ) {
+				return false;
+			}
+			prev = elem;
+		}
+		return true;
+	}
+	public static <T extends Comparable> boolean isSorted(List<T> listOfT) {
+		T previous = null;
+		for (T t: listOfT) {
+			if (previous != null && t.compareTo(previous) < 0) return false;
+			previous = t;
+		}
+		return true;
+	}
+
+	protected boolean isSortDes(List<String> list1) {
+		String prev = null;
+		for( String elem : list1 ) {
+			if( prev != null && prev.compareTo(elem) < 0 ) {
+				return false;
+			}
+			prev = elem;
+		}
+		return true;
 	}
 }
 

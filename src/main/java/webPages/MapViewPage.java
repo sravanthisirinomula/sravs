@@ -17,9 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class MapViewPage extends PTRAC_TestBase {
+public class MapViewPage extends TestBase {
 	Robot robot;
 	@FindBy(xpath=".//a[contains(.,'Sanction zones')]")
 	WebElement lnkSanctionZones;	

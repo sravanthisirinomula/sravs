@@ -15,9 +15,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class AddShipsPage extends PTRAC_TestBase {
+public class AddShipsPage extends TestBase {
 
 	public AddShipsPage() {
 		PageFactory.initElements(driver, this);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extentreports>
+<configuration>
+<theme>standard</theme>
+<documentTitle>Polestar Global</documentTitle>
+<reportName>PTRAC Automation Report</reportName>
+<reportHeadline>Headline 2</reportHeadline>
+<dateFormat>yyyy-MMM-dd</dateFormat>
+<timeFormat>HH:MM:SS</timeFormat>
+</configuration>
+</extentreports>

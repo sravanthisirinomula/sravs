@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class OverdueShipsPage extends PTRAC_TestBase{
+public class OverdueShipsPage extends TestBase{
 
 	public OverdueShipsPage() throws IOException{
 		super();

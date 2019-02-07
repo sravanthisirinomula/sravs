@@ -7,13 +7,13 @@ import java.util.Iterator;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 import commonMethods.CommonMethods;
 import webPages.HomePage;
 import webPages.LoginPage;
 import webPages.SortingPage;
 
-public class Generic_VerifySystemStatus extends PTRAC_TestBase{
+public class Generic_VerifySystemStatus extends TestBase{
 	LoginPage loginPage;
 	HomePage homePage;
 	SortingPage sortPage;
@@ -33,8 +33,10 @@ public class Generic_VerifySystemStatus extends PTRAC_TestBase{
 		click("System Status Link", homePage.getLnkSystemStatus());
 		homePage=new HomePage();
 		wait(2);
-		//for(int i=0;i<homePage.getLblSystemStatusComponent().size();i++) {
-		System.out.println();
+		for(int i=0;i<homePage.getLblSystemStatusComponent().size();i++) {
+		System.out.println(homePage.getLblSystemStatusComponent().get(i).getText());
+		System.out.println(homePage.getLblSystemStatusComponent().get(i).getText());
+		}
 		if(homePage.getLblSystemStatusComponent().get(2).getText().contains("AIS - Secondary ship position source"))
 		{
 			capturePassStatus("expected system status component# AIS - Secondary ship position source"+" Actual System Status# "

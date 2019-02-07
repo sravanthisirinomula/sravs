@@ -1,4 +1,4 @@
-package com.ptrac.qa.utilities;
+package utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,9 +16,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 
-public class Utilities extends PTRAC_TestBase{
+public class Utilities extends TestBase{
 public Utilities() throws IOException {
 		super();
 		// TODO Auto-generated constructor stub

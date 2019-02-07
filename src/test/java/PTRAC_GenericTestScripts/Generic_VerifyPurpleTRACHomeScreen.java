@@ -7,13 +7,13 @@ import java.util.Iterator;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import baseClass.PTRAC_TestBase;
+import Library.TestBase;
 import commonMethods.CommonMethods;
 import webPages.HomePage;
 import webPages.LoginPage;
 import webPages.SortingPage;
 
-public class Generic_VerifyPurpleTRACHomeScreen extends PTRAC_TestBase{
+public class Generic_VerifyPurpleTRACHomeScreen extends TestBase{
 	LoginPage loginPage;
 	HomePage homePage;
 	SortingPage sortPage;
@@ -57,7 +57,7 @@ public class Generic_VerifyPurpleTRACHomeScreen extends PTRAC_TestBase{
 
 	private void verifySortDrop() throws IOException {
 		sortPage=new SortingPage();
-		if(sortPage.getSortDrpDwn().isEnabled()&& sortPage.getSortDrpDwn().isDisplayed()) {
+		if(sortPage.getSortOptionsDrpdwn().isEnabled()&& sortPage.getSortOptionsDrpdwn().isDisplayed()) {
 			capturePassStatus("Sort dropdown field is enabled and displayed");
 		}else{
 			captureFailStatus("Sort dropdown is not enabled or displayed");

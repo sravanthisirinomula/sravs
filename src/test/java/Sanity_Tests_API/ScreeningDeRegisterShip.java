@@ -7,21 +7,20 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ptrac.qa.utilities.Utilities;
-import com.ptrac.qa.utilities.WebServices;
-
-import baseClass.PTRAC_API_TestBase;
-import baseClass.PTRAC_TestBase;
+import Library.PTRAC_API_TestBase;
+import Library.TestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-public class ScreeningDeRegisterShip extends PTRAC_TestBase{
+import utilities.Utilities;
+import utilities.WebServices;
+public class ScreeningDeRegisterShip extends TestBase{
 	static String api;
 	Response response;
 	JsonPath jsonPathEvaluator;
 
 	@Test
 	void ScreenDeRegisterShip() throws EncryptedDocumentException, InvalidFormatException, IOException {
-		Object data[][]=Utilities.getDatafromExcel(apiSanTestDataFile, "DeRegister");
+		Object data[][]=Utilities.getDatafromExcel(apiTestDataFile, "DeRegister");
 		/*String apiKey=(String) data[0][1];
 		String user=(String) data[0][0];
 		 */
